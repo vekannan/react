@@ -1,39 +1,31 @@
 import React , { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux'
 
 class App extends Component {
-  state = {
-    age:1
-  }
-  constructor () {
-    super()
-    this.setState({
-      age: 2
-    })
-  }
   render() {
     return (
       <div className="App">
-        <div>Age : {this.state.age}</div>
-        <button onClick={this.addAge}>Add Age</button>
-        <button onClick={this.reduceAge}>Reduce Age</button>
+        <div>Age : {this.props.age}</div>
+        <button onClick={this.props.addAge}>Add Age</button>
+        <button onClick={this.props.reduceAge}>Reduce Age</button>
       </div>
     );
   }
+}
 
-  addAge = () => {
-    this.setState({
-      ...this.state,
-      age: this.state.age + 1,
-    })
-  }
-
-  reduceAge = () => {
-    this.setState({
-      ...this.state,
-      age: this.state.age - 1,
-    })
+const mapStateToProps = (state) => {
+  return {
+    age: state.age
   }
 }
 
-export default App;
+ const mapDispatchToProps = (dispatch) => {
+  return {
+    addAge: () => dispatch({type: 'ADD_AGE'}),
+    reduceAge: () => dispatch({type: 'REDUCE_AGE'})
+  }
+ }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

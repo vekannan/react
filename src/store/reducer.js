@@ -1,15 +1,24 @@
 const initialState = {
-    age: 1  
+    age: 30
 }
 
-export const ADD_AGE = 'Add_age'
+export const ADD_AGE = 'ADD_AGE'
 export const REDUCE_AGE = 'REDUCE_AGE'
-export default reducer = (state = initialState, action) => {
-    const newState = state
+
+const reducer = (state = initialState, action) => {
+    const newState = { ...state }
     switch (action.type) {
         case ADD_AGE:
-            newState = newState.age + 1
+            newState.age = newState.age + 2
+            break
         case REDUCE_AGE:
-            newState = newState.age - 1
+            newState.age = newState.age - 2
+            break
+        default:
+            break
+            
     }
+    return newState
 }
+
+export default reducer
