@@ -1,14 +1,16 @@
 import React , { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
+import { addAge, reduceAge } from './store/reducer'
 
 class App extends Component {
   render() {
+    const { age, addAge, reduceAge } = this.props
     return (
       <div className="App">
-        <div>Age : {this.props.age}</div>
-        <button onClick={this.props.addAge}>Add Age</button>
-        <button onClick={this.props.reduceAge}>Reduce Age</button>
+        <div>Age : { age }</div>
+        <button onClick={ addAge }>Add Age</button>
+        <button onClick={ reduceAge }>Reduce Age</button>
       </div>
     );
   }
@@ -20,11 +22,9 @@ const mapStateToProps = (state) => {
   }
 }
 
- const mapDispatchToProps = (dispatch) => {
-  return {
-    addAge: () => dispatch({type: 'ADD_AGE'}),
-    reduceAge: () => dispatch({type: 'REDUCE_AGE'})
-  }
+ const mapDispatchToProps = {
+    addAge,
+    reduceAge,
  }
 
 

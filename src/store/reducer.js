@@ -21,4 +21,10 @@ const reducer = (state = initialState, action) => {
     return newState
 }
 
+export const addAge = () =>  ({type: 'ADD_AGE'})
+
+export const reduceAge = () => ({type: 'REDUCE_AGE'})
+
+export const add = () => ({type: 'ADD_AGE'})
+
 export default reducer
